@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/app/model/model.dart';
+import 'package:flutter_todo/app/pages/task_form.dart';
 
 class TaskListItem extends StatelessWidget {
   final Task task;
@@ -68,7 +69,14 @@ class TaskListItem extends StatelessWidget {
                 ),
         ),
         trailing: OutlinedButton(
-          onPressed: () {},
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TaskForm(
+                task: task,
+              ),
+            ),
+          ),
           style: OutlinedButton.styleFrom(
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(

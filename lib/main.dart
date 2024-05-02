@@ -10,8 +10,30 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: App(),
+    return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromRGBO(53, 86, 171, 1.0),
+          onSurface: const Color.fromRGBO(7, 29, 85, 1.0),
+          brightness: Brightness.light,
+        ),
+        appBarTheme: const AppBarTheme(
+          foregroundColor: Colors.white,
+          backgroundColor: Color.fromRGBO(53, 86, 171, 1.0),
+          titleTextStyle: TextStyle(
+            fontSize: 20.0,
+            shadows: [
+              Shadow(
+                color: Colors.black,
+                offset: Offset(0, 2.0),
+              ),
+            ],
+          ),
+          toolbarHeight: 120.0,
+        ),
+      ),
+      home: const App(),
     );
   }
 }
