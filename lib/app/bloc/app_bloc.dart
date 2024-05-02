@@ -47,8 +47,20 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   void _onEditTaskEvent(EditTaskEvent event, Emitter<AppState> emit) {
+    final updatedTasks = state.tasks.map((task) {
+      if (task.id == event.taskId) {
+        return task.copyWith(
+          name: event.name,
+        );
+      } else {
+        return task;
+      }
+    }).toList();
+
     emit(
-      state.copyWith(),
+      state.copyWith(
+        tasks: updatedTasks,
+      ),
     );
   }
 

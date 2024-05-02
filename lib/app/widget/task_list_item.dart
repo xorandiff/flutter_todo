@@ -14,6 +14,8 @@ class TaskListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<AppBloc>(context);
+
     return Card.outlined(
       surfaceTintColor: Colors.white,
       shadowColor: Colors.black38,
@@ -85,8 +87,11 @@ class TaskListItem extends StatelessWidget {
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => TaskForm(
-                task: task,
+              builder: (context) => BlocProvider.value(
+                value: bloc,
+                child: TaskForm(
+                  task: task,
+                ),
               ),
             ),
           ),

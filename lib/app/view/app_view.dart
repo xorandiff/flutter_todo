@@ -10,12 +10,17 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<AppBloc>(context);
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const TaskForm(),
+            builder: (context) => BlocProvider.value(
+              value: bloc,
+              child: const TaskForm(),
+            ),
           ),
         ),
         child: const Icon(
@@ -30,30 +35,33 @@ class AppView extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        title: const Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              backgroundImage: AssetImage('images/me.png'),
-              radius: 25.0,
-            ),
-            Gap(16.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Hello, Mateusz'),
-                Gap(6.0),
-                Text(
-                  'mateusz.struk@gmail.com',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.w100,
-                    fontStyle: FontStyle.italic,
+        title: const SizedBox(
+          height: 100.0,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage('images/me.png'),
+                radius: 25.0,
+              ),
+              Gap(16.0),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Hello, Mateusz'),
+                  Gap(6.0),
+                  Text(
+                    'mateusz.struk@gmail.com',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.w100,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
       body: Column(

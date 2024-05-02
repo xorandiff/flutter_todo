@@ -6,24 +6,24 @@ class ProBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(205, 229, 61, 1.0),
-        boxShadow: const [
-          BoxShadow(
-            offset: Offset(0.0, 2.0),
-            blurRadius: 5.0,
-            color: Colors.black12,
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(205, 229, 61, 1.0),
+            boxShadow: const [
+              BoxShadow(
+                offset: Offset(0.0, 2.0),
+                blurRadius: 5.0,
+                color: Colors.black12,
+              ),
+            ],
+            border: Border.all(
+              color: const Color.fromRGBO(158, 176, 49, 1.0),
+              width: 2.0,
+            ),
           ),
-        ],
-        border: Border.all(
-          color: const Color.fromRGBO(158, 176, 49, 1.0),
-          width: 2.0,
-        ),
-      ),
-      child: Stack(
-        children: [
-          Padding(
+          child: Padding(
             padding: const EdgeInsets.all(22.0),
             child: Row(
               children: [
@@ -68,23 +68,23 @@ class ProBanner extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            top: 0.0,
-            right: 20.0,
-            child: Container(
-              color: const Color.fromRGBO(7, 9, 85, 1.0),
-              padding: const EdgeInsets.all(18.0),
-              child: const Text(
-                '\$1',
-                style: TextStyle(
-                  color: Color.fromRGBO(242, 201, 76, 1.0),
-                  fontWeight: FontWeight.bold,
-                ),
+        ),
+        Positioned(
+          top: 0.0,
+          right: 20.0,
+          child: Container(
+            color: const Color.fromRGBO(7, 9, 85, 1.0),
+            padding: const EdgeInsets.all(18.0),
+            child: const Text(
+              '\$1',
+              style: TextStyle(
+                color: Color.fromRGBO(242, 201, 76, 1.0),
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

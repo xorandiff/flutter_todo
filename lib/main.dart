@@ -19,9 +19,16 @@ class MainApp extends StatelessWidget {
           onSurface: const Color.fromRGBO(7, 29, 85, 1.0),
           brightness: Brightness.light,
         ),
+        scaffoldBackgroundColor: const Color.fromRGBO(243, 243, 243, 1.0),
         inputDecorationTheme: const InputDecorationTheme(
           fillColor: Colors.white,
-          border: OutlineInputBorder(),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.grey,
+              width: 2.0,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          ),
           filled: true,
         ),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
@@ -44,6 +51,16 @@ class MainApp extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(
+              vertical: 20.0,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              side: const BorderSide(
+                color: Color.fromRGBO(7, 29, 85, 1.0),
+                width: 2.0,
+              ),
+            ),
             backgroundColor: const Color.fromRGBO(53, 86, 171, 1.0),
             elevation: 8.0,
             foregroundColor: Colors.white,
