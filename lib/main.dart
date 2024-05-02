@@ -14,9 +14,19 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
+          background: const Color.fromRGBO(243, 243, 243, 1.0),
           seedColor: const Color.fromRGBO(53, 86, 171, 1.0),
           onSurface: const Color.fromRGBO(7, 29, 85, 1.0),
           brightness: Brightness.light,
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          fillColor: Colors.white,
+          border: OutlineInputBorder(),
+          filled: true,
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Color.fromRGBO(53, 86, 171, 1.0),
+          shape: CircleBorder(),
         ),
         appBarTheme: const AppBarTheme(
           foregroundColor: Colors.white,
@@ -31,6 +41,13 @@ class MainApp extends StatelessWidget {
             ],
           ),
           toolbarHeight: 120.0,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromRGBO(53, 86, 171, 1.0),
+            elevation: 8.0,
+            foregroundColor: Colors.white,
+          ),
         ),
       ),
       home: const App(),

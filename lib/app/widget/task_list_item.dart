@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_todo/app/bloc/app_bloc.dart';
 import 'package:flutter_todo/app/model/model.dart';
 import 'package:flutter_todo/app/pages/task_form.dart';
 
@@ -28,30 +30,41 @@ class TaskListItem extends StatelessWidget {
               color: Colors.transparent,
             ),
           ),
-          child: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
+          child: GestureDetector(
+            onTap: () => task.isDone
+                ? context
+                    .read<AppBloc>()
+                    .add(MarkTaskUndoneEvent(taskId: task.id))
+                : context
+                    .read<AppBloc>()
+                    .add(MarkTaskDoneEvent(taskId: task.id)),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: task.isDone
+                      ? const Color.fromRGBO(73, 194, 93, 1.0)
+                      : const Color.fromRGBO(7, 29, 85, 1.0),
+                  width: 2.0,
+                  style: BorderStyle.solid,
+                ),
                 color: task.isDone
-                    ? const Color.fromRGBO(73, 194, 93, 1.0)
-                    : const Color.fromRGBO(7, 29, 85, 1.0),
-                width: 2.0,
-                style: BorderStyle.solid,
+                    ? const Color.fromRGBO(83, 218, 105, 1.0)
+                    : null,
               ),
-              color:
-                  task.isDone ? const Color.fromRGBO(83, 218, 105, 1.0) : null,
+              padding: const EdgeInsets.all(4.0),
+              child: task.isDone
+                  ? const Icon(
+                      Icons.check_rounded,
+                      size: 18.0,
+                      color: Color.fromRGBO(57, 150, 73, 1.0),
+                    )
+                  : const SizedBox(
+                      width: 18.0,
+                      height: 18.0,
+                    ),
             ),
-            padding: const EdgeInsets.all(4.0),
-            child: task.isDone
-                ? const Icon(
-                    Icons.check_rounded,
-                    size: 18.0,
-                    color: Color.fromRGBO(57, 150, 73, 1.0),
-                  )
-                : const SizedBox(
-                    width: 18.0,
-                    height: 18.0,
-                  ),
           ),
         ),
         title: Text(

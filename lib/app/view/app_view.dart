@@ -11,6 +11,24 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const TaskForm(),
+          ),
+        ),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 30.0,
+          shadows: [
+            Shadow(
+              offset: Offset(0.0, 1.5),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: const Row(
           crossAxisAlignment: CrossAxisAlignment.start,
